@@ -14,8 +14,9 @@ internal static class Program
 
     // ---- Modul 01 ----
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe1_Bmi.BmiForm());
-    Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe1_Bmi.Form1());
+    //Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe1_Bmi.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe2_Waehrungsrechner.WaehrungsrechnerForm());
+    Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe2_Waehrungsrechner.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe3_ZahlenAnalyse.ZahlenAnalyseForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe4_Einheitenrechner.EinheitenrechnerForm());
 
