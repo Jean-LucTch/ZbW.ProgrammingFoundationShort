@@ -24,9 +24,12 @@ public partial class RabattKalkulatorForm : Form
   {
     // TODO 1: Betrag aus TxtBetrag lesen (decimal.TryParse), muss grösser als 0 sein
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
+    if(decimal.TryParse(TxtBetrag.Text, out decimal betrag) && betrag > 0) { }
+    else { MessageBox.Show("Ungültige Eingabe oder Wert muss grösser als 0 sein."); return; }
 
     // TODO 2: Rabatt aus RadioButton ermitteln
     //         RadNormal = 0%, RadPremium = 10%, RadVip = 20%
+    int rabatt = Convert.ToString(RadNormal.Checked, RadPremium.Checked, RadVip.Checked) switch { };
 
     // TODO 3: Wenn ChkLehrling.Checked → Rabatt += 5
 
