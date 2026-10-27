@@ -19,8 +19,8 @@ internal static class Program
     // ZbW.ProgrammingFoundationShort.Lessons.Module01.Auftrag3_DatentypQuiz.DatentypQuiz.Start();
 
     // ---- Modul 02 ----
-    Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag1_Notenrechner.NotenrechnerForm());
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag2_WochentageApp.WochentageAppForm());
+    //Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag1_Notenrechner.NotenrechnerForm());
+     Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag2_WochentageApp.WochentageAppForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag3_RabattKalkulator.RabattKalkulatorForm());
 
     // ---- Modul 03 ----
