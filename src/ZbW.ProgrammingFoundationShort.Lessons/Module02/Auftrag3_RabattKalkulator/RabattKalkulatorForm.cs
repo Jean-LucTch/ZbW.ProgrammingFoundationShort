@@ -15,6 +15,8 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag3_RabattKalkula
 
 public partial class RabattKalkulatorForm : Form
 {
+  public enum Rad { Normal, Premium, VIP}
+
   public RabattKalkulatorForm()
   {
     InitializeComponent();
@@ -29,13 +31,29 @@ public partial class RabattKalkulatorForm : Form
 
     // TODO 2: Rabatt aus RadioButton ermitteln
     //         RadNormal = 0%, RadPremium = 10%, RadVip = 20%
-    int rabatt = Convert.ToString(RadNormal.Checked, RadPremium.Checked, RadVip.Checked) switch { };
+    Rad rabattermitteln;
+
+    if (RadNormal.Checked) { rabattermitteln = Rad.Normal; }
+    else if (RadPremium.Checked) { rabattermitteln = Rad.Premium; }
+    else { rabattermitteln = Rad.VIP; }
+
+    int rabatt = (rabattermitteln) switch
+    {
+      Rad.Normal => 0,
+      Rad.Premium => 10,
+      Rad.VIP => 20
+    };
 
     // TODO 3: Wenn ChkLehrling.Checked → Rabatt += 5
+    rabatt += ChkLehrling.Checked
+      ? 5
+      : 0;
 
     // TODO 4: Rabatt in CHF und Endbetrag berechnen:
-    //         rabattBetrag = betrag * rabatt / 100m;  endbetrag = betrag - rabattBetrag
+    decimal rabattBetrag = betrag * rabatt / 100m;
+    decimal endbetrag = betrag - rabattBetrag;
 
     // TODO 5: LblErgebnis.Text setzen: Originalbetrag, Rabatt in CHF (und %), Endbetrag
+    LblErgebnis.Text = $"Originalbetrag: {betrag}, Rabatt: {rabattBetrag}CHF = {rabatt}%, Endbetrag: {endbetrag}";
   }
 }
