@@ -15,31 +15,36 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       InitializeComponent();
     }
 
-    public enum TrafficLightColor
-    {
-      Red,
-      Yellow,
-      Green
-    }
-
     private void CmdAnzeigen_Click(object sender, EventArgs e)
     {
+      TrafficLightColor farbe;
+      if(RadRot.Checked)
+      {
+        farbe = TrafficLightColor.Red;
+      }
+      else if (RadGelb.Checked)
+      {
+        farbe = TrafficLightColor.Yellow;
+      }
+      else if (RadGruen.Checked)
+      {
+        farbe = TrafficLightColor.Green;
+      }
+      string meldung;
+      Color ampelFarbe;
 
-    }
+      switch (farbe)
+      {
+        case TrafficLightColor.Red:
+        meldung = "Achtung! Anhalten ist Rot!";
+        ampelFarbe = Color.Red;
+        break;
 
-    private void RadRot_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void RadGelb_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void RadGruen_CheckedChanged(object sender, EventArgs e)
-    {
-
+        default:
+        meldung = "Unbekannt";
+        ampelFarbe = Color.Gray;
+        break;
+      }
     }
   }
 }

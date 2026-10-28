@@ -63,7 +63,6 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       RadRot.TabIndex = 0;
       RadRot.TabStop = true;
       RadRot.Text = "Rot";
-      RadRot.CheckedChanged += RadRot_CheckedChanged;
       // 
       // RadGelb
       // 
@@ -74,7 +73,6 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       RadGelb.Size = new Size(61, 24);
       RadGelb.TabIndex = 1;
       RadGelb.Text = "Gelb";
-      RadGelb.CheckedChanged += RadGelb_CheckedChanged;
       // 
       // RadGruen
       // 
@@ -85,7 +83,6 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       RadGruen.Size = new Size(61, 24);
       RadGruen.TabIndex = 2;
       RadGruen.Text = "Grün";
-      RadGruen.CheckedChanged += RadGruen_CheckedChanged;
       // 
       // CmdAnzeigen
       // 
