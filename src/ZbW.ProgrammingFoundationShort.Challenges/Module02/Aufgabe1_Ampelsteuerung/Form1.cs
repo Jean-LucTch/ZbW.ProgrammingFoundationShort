@@ -10,6 +10,8 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
 {
   public partial class Form1 : Form
   {
+    public enum TrafficLightColor { Red, Yellow, Green }
+
     public Form1()
     {
       InitializeComponent();
@@ -26,7 +28,7 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       {
         farbe = TrafficLightColor.Yellow;
       }
-      else if (RadGruen.Checked)
+      else
       {
         farbe = TrafficLightColor.Green;
       }
@@ -36,15 +38,26 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
       switch (farbe)
       {
         case TrafficLightColor.Red:
-        meldung = "Achtung! Anhalten ist Rot!";
-        ampelFarbe = Color.Red;
-        break;
-
+          meldung = "Anhalten!";
+          ampelFarbe = Color.Red;
+          break;
+        case TrafficLightColor.Yellow:
+          meldung = "Vorsicht, bremsen!";
+          ampelFarbe= Color.Yellow;
+          break;
+        case TrafficLightColor.Green:
+          meldung = "Fahren!";
+          ampelFarbe = Color.Green;
+          break;
         default:
-        meldung = "Unbekannt";
-        ampelFarbe = Color.Gray;
-        break;
+          meldung = "Unbekannt";
+          ampelFarbe = Color.Gray;
+          break;
       }
+
+      LblMeldung.Text = meldung;
+      LblAmpel.BackColor = ampelFarbe;
+      
     }
   }
 }

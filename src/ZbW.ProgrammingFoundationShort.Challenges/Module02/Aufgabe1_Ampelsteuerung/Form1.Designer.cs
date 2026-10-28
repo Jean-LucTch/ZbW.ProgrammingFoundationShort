@@ -139,5 +139,5 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe1_Ampelsteue
   }
 
     #endregion
-  }
+  
 }
