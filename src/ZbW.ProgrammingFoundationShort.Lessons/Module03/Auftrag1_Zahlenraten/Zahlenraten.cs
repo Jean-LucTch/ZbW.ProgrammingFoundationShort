@@ -18,17 +18,35 @@ public static class Zahlenraten
   public static void Start()
   {
     // TODO 1: Random-Objekt erstellen, Zufallszahl 1-100 generieren
-    //         var random = new Random();
-    //         int geheimzahl = random.Next(1, 101);
+    var random = new Random();
+    int geheimzahl = random.Next(1, 101);
+
+
 
     // TODO 2: Variablen für Versuchszähler und geraten-Flag
+    int versuche = 0;
+    bool geraten = false;
 
     // TODO 3: while-Schleife (!geraten)
     //         - Eingabe lesen
     //         - int.TryParse prüfen
     //         - Hinweis ausgeben (zu klein / zu gross / richtig)
     //         - Versuchszähler erhöhen
+    while (!geraten)
+    {
+
+      Console.Write("\nEingabe: ");
+      if (int.TryParse(Console.ReadLine(), out int zahl)) { }
+
+      if (zahl == geheimzahl) { Console.WriteLine("richtig"); geraten = true; }
+      else if (zahl > geheimzahl) { Console.WriteLine("zu gross"); }
+      else if (zahl < geheimzahl) { Console.WriteLine("zu klein"); }
+      else { Console.WriteLine("Ungültige eingabe"); }
+      versuche += 1;
+    }
+
 
     // TODO 4: Glückwunsch mit Anzahl Versuche ausgeben
+    Console.WriteLine($"\n\nGlückwunsch du hast {versuche} Versuche gebraucht");
   }
 }
