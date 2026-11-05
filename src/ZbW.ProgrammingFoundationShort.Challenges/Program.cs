@@ -27,11 +27,12 @@ internal static class Program
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe2_Notenrechner.NotenrechnerForm());
     //Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe2_Notenrechner.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe3_Versicherungspraemie.VersicherungspraemieForm());
-    Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe3_Versicherungspraemie.Form1());
+    //Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe3_Versicherungspraemie.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module02.Aufgabe4_TaschenrechnerVerlauf.TaschenrechnerVerlaufForm());
 
     // ---- Modul 03 ----
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module03.Aufgabe1_Multiplikationstabelle.MultiplikationstabelleForm());
+     Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module03.Aufgabe1_Multiplikationstabelle.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module03.Aufgabe2_ZahlenRatespiel.ZahlenRatespielForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module03.Aufgabe3_PasswortGenerator.PasswortGeneratorForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module03.Aufgabe4_StatistikSimulator.StatistikSimulatorForm());
