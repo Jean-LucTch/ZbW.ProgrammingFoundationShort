@@ -39,6 +39,7 @@ public static class Zahlenraten
       if (int.TryParse(Console.ReadLine(), out int zahl)) { }
 
       if (zahl == geheimzahl) { Console.WriteLine("richtig"); geraten = true; }
+      else if (zahl == 0) { Console.WriteLine("Unglütige Wert"); }
       else if (zahl > geheimzahl) { Console.WriteLine("zu gross"); }
       else if (zahl < geheimzahl) { Console.WriteLine("zu klein"); }
       else { Console.WriteLine("Ungültige eingabe"); }
