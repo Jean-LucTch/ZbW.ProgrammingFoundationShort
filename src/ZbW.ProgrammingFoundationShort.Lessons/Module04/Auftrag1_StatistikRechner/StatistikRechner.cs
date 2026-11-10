@@ -47,7 +47,7 @@ public static class StatistikRechner
     {
       if (zahlen[counter] < akuellezahl)
       {
-        akuellezahl = (int)zahlen[counter];
+        akuellezahl = zahlen[counter];
       }
 
       counter++;
