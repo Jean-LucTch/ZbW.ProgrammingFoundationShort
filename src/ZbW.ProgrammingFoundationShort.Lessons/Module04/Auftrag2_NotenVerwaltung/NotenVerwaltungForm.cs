@@ -42,18 +42,33 @@ public partial class NotenVerwaltungForm : Form
   private double Average(double[] noten, int anzahl)
   {
     // TODO: Durchschnitt der ersten "anzahl" Noten
-    return 0;
+    double calcnoten = 0;
+    for (int i = 0; i < anzahl; i++)
+    {
+      calcnoten += noten[i];
+    }
+    return calcnoten / anzahl;
   }
 
   private double Best(double[] noten, int anzahl)
   {
     // TODO: Höchste Note finden
-    return 0;
+    double akutellenote = noten[0];
+    foreach (double note in noten)
+    {
+      if(akutellenote < note){ akutellenote = note;}
+    }
+    return akutellenote;
   }
 
   private double Worst(double[] noten, int anzahl)
   {
     // TODO: Niedrigste Note finden
-    return 0;
+    double akutellenote = noten[0];
+    foreach (double note in noten)
+    {
+      if(akutellenote > note){ akutellenote = note;}
+    }
+    return akutellenote;
   }
 }
