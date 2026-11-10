@@ -25,9 +25,9 @@ public static class StatistikRechner
 
     for (int i = 0; i < 5; i++)
     {
-      Console.Write($"\n{counter} Zahl vergeben: ");
+      Console.Write($"\n{counter}. Zahl vergeben: ");
       if (int.TryParse(Console.ReadLine(), out int akutellezahl)) { }
-      else { MessageBox.Show("Keine Gültige Zahl eingegeben"); i--; return; }
+      else { MessageBox.Show("Keine Gültige Zahl eingegeben"); i--; continue; }
 
       zahlenarray[i] = akutellezahl;
       counter++;
