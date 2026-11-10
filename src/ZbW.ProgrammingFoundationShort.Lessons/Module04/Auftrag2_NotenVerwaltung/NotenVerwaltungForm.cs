@@ -17,6 +17,7 @@ public partial class NotenVerwaltungForm : Form
 {
   // TODO 1: Felder deklarieren
   private double[] _noten = new double[10];
+  private double[] _labelnoten = new double[10];
   private int _anzahl = 0;
 
   public NotenVerwaltungForm()
@@ -34,9 +35,12 @@ public partial class NotenVerwaltungForm : Form
     _noten[_anzahl] = akutellenote;
     _anzahl++;
     // TODO 4: Wenn voll: CmdHinzufuegen.Enabled = false;
-    if (_anzahl == 5) { CmdHinzufuegen.Enabled = false; }
+    if (_anzahl == 10) { CmdHinzufuegen.Enabled = false; }
     // TODO 5: Anzeige aktualisieren (sortierte Kopie + Statistik)
-
+    Array.Copy(_noten, _labelnoten, _anzahl);
+    Array.Sort(_labelnoten);
+    LblStats.Text = $"Durchschnitt: {Average(_noten, _anzahl):F2}, Beste Note: {Best(_noten, _anzahl)}, Worst: {Worst(_noten, _anzahl)}";
+    UpdateLabel(_labelnoten, _anzahl);
   }
 
   private double Average(double[] noten, int anzahl)
@@ -67,8 +71,28 @@ public partial class NotenVerwaltungForm : Form
     double akutellenote = noten[0];
     foreach (double note in noten)
     {
-      if(akutellenote > note){ akutellenote = note;}
+      if(akutellenote > note && note != 0){ akutellenote = note;}
     }
     return akutellenote;
+  }
+
+  private void UpdateLabel(double[] noten, int anzahl)
+  {
+    LblNoten.Text = "";
+    int counter = 0;
+    for (int i = 0; i < anzahl; i++)
+    {
+      if(noten[i + counter] == 0)
+      {
+        counter++;
+        --i;
+        continue;
+      }
+      else {LblNoten.Text += $"{noten[i+counter]}, ";}
+    }
+    foreach (double x in noten)
+    {
+      Array.Clear(_labelnoten, 0, _labelnoten.Length);
+    }
   }
 }
