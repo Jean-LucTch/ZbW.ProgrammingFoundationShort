@@ -9,6 +9,9 @@
     <Compile Update="Module04\Aufgabe1_TemperaturAuswertung\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Module04\Aufgabe2_Wortzaehler\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
