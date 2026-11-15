@@ -12,6 +12,9 @@
     <Compile Update="Module04\Aufgabe2_Wortzaehler\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Module04\Aufgabe3_MatrizenRechner\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
