@@ -6,22 +6,29 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module04.Aufgabe3_MatrizenRe
 /// </summary>
 public partial class MatrizenRechnerForm : Form
 {
+  // Eine 3×3-Matrix hat 3 Zeilen und 3 Spalten.
+  private const int RowCount = 3;
+  private const int ColumnCount = 3;
+
   public MatrizenRechnerForm()
   {
     InitializeComponent();
   }
 
   // Eine Methode für beide Matrizen – die TextBoxen werden als Parameter übergeben
-  private static int[,] ReadMatrix(TextBox[,] felder, string name)
+  private static int[,] ReadMatrix(TextBox[,] inputFields, string matrixName)
   {
-    int[,] matrix = new int[3, 3];
-    for (int i = 0; i < 3; i++)
+    int[,] matrix = new int[RowCount, ColumnCount];
+    for (int row = 0; row < RowCount; row++)
     {
-      for (int j = 0; j < 3; j++)
+      for (int column = 0; column < ColumnCount; column++)
       {
-        if (!int.TryParse(felder[i, j].Text, out matrix[i, j]))
+        string input = inputFields[row, column].Text;
+        if (!int.TryParse(input, out matrix[row, column]))
         {
-          throw new FormatException($"Ungültiger Wert in Matrix {name} [{i},{j}]");
+          // +1, damit die Meldung bei 1 zu zählen beginnt (Zeile 1 statt Zeile 0)
+          throw new FormatException(
+            $"Ungültiger Wert «{input}» in Matrix {matrixName}, Zeile {row + 1}, Spalte {column + 1}.");
         }
       }
     }
@@ -31,33 +38,37 @@ public partial class MatrizenRechnerForm : Form
 
   private int[,] ReadMatrixA()
   {
-    TextBox[,] felder = {
-      { TxtA00, TxtA01, TxtA02 },
-      { TxtA10, TxtA11, TxtA12 },
-      { TxtA20, TxtA21, TxtA22 }
+    // Namensschema: Txt<Matrix>_R<Row>C<Column>
+    TextBox[,] inputFields =
+    {
+      //  Spalte 1    Spalte 2    Spalte 3
+      { TxtA_R1C1, TxtA_R1C2, TxtA_R1C3 }, // Zeile 1
+      { TxtA_R2C1, TxtA_R2C2, TxtA_R2C3 }, // Zeile 2
+      { TxtA_R3C1, TxtA_R3C2, TxtA_R3C3 }  // Zeile 3
     };
-    return ReadMatrix(felder, "A");
+    return ReadMatrix(inputFields, "A");
   }
 
   private int[,] ReadMatrixB()
   {
-    TextBox[,] felder = {
-      { TxtB00, TxtB01, TxtB02 },
-      { TxtB10, TxtB11, TxtB12 },
-      { TxtB20, TxtB21, TxtB22 }
+    TextBox[,] inputFields =
+    {
+      { TxtB_R1C1, TxtB_R1C2, TxtB_R1C3 },
+      { TxtB_R2C1, TxtB_R2C2, TxtB_R2C3 },
+      { TxtB_R3C1, TxtB_R3C2, TxtB_R3C3 }
     };
-    return ReadMatrix(felder, "B");
+    return ReadMatrix(inputFields, "B");
   }
 
   private void CmdAddieren_Click(object sender, EventArgs e)
   {
     try
     {
-      int[,] a = ReadMatrixA();
-      int[,] b = ReadMatrixB();
-      int[,] result = AddMatrices(a, b);
-      LblErgebnis.Text = "A + B =\r\n";
-      ShowMatrix(result, LblErgebnis);
+      int[,] matrixA = ReadMatrixA();
+      int[,] matrixB = ReadMatrixB();
+      int[,] sumMatrix = AddMatrices(matrixA, matrixB);
+      LblErgebnis.Text = "A + B =" + Environment.NewLine;
+      ShowMatrix(sumMatrix, LblErgebnis);
     }
     catch (FormatException ex)
     {
@@ -69,10 +80,10 @@ public partial class MatrizenRechnerForm : Form
   {
     try
     {
-      int[,] a = ReadMatrixA();
-      int[,] result = Transpose(a);
-      LblErgebnis.Text = "A^T =\r\n";
-      ShowMatrix(result, LblErgebnis);
+      int[,] matrixA = ReadMatrixA();
+      int[,] transposedMatrix = Transpose(matrixA);
+      LblErgebnis.Text = "A^T =" + Environment.NewLine;
+      ShowMatrix(transposedMatrix, LblErgebnis);
     }
     catch (FormatException ex)
     {
@@ -80,48 +91,50 @@ public partial class MatrizenRechnerForm : Form
     }
   }
 
-  private static int[,] AddMatrices(int[,] a, int[,] b)
+  // Addition: Jedes Element wird mit dem Element an derselben Position addiert.
+  private static int[,] AddMatrices(int[,] matrixA, int[,] matrixB)
   {
-    var result = new int[3, 3];
-    for (int i = 0; i < 3; i++)
+    int[,] sumMatrix = new int[RowCount, ColumnCount];
+    for (int row = 0; row < RowCount; row++)
     {
-      for (int j = 0; j < 3; j++)
+      for (int column = 0; column < ColumnCount; column++)
       {
-        result[i, j] = a[i, j] + b[i, j];
+        sumMatrix[row, column] = matrixA[row, column] + matrixB[row, column];
       }
     }
 
-    return result;
+    return sumMatrix;
   }
 
+  // Transposition: Zeilen werden zu Spalten (Spiegelung an der Diagonale).
   private static int[,] Transpose(int[,] matrix)
   {
-    var result = new int[3, 3];
-    for (int i = 0; i < 3; i++)
+    int[,] transposedMatrix = new int[ColumnCount, RowCount];
+    for (int row = 0; row < RowCount; row++)
     {
-      for (int j = 0; j < 3; j++)
+      for (int column = 0; column < ColumnCount; column++)
       {
-        result[j, i] = matrix[i, j];
+        transposedMatrix[column, row] = matrix[row, column];
       }
     }
 
-    return result;
+    return transposedMatrix;
   }
 
-  private static void ShowMatrix(int[,] matrix, Label label)
+  private static void ShowMatrix(int[,] matrix, Label outputLabel)
   {
-    string text = label.Text;
-    for (int i = 0; i < 3; i++)
+    string text = outputLabel.Text;
+    for (int row = 0; row < matrix.GetLength(0); row++)
     {
       text += "| ";
-      for (int j = 0; j < 3; j++)
+      for (int column = 0; column < matrix.GetLength(1); column++)
       {
-        text += $"{matrix[i, j],4} ";
+        text += $"{matrix[row, column],4} ";
       }
 
       text += "|" + Environment.NewLine;
     }
 
-    label.Text = text;
+    outputLabel.Text = text;
   }
 }

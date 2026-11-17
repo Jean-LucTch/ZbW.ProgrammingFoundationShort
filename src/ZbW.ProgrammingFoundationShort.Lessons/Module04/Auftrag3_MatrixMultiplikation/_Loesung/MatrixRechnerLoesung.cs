@@ -6,32 +6,40 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag3_MatrixMultipl
 /// </summary>
 public static class MatrixRechnerLoesung
 {
+  private const int Size = 2; // 2×2-Matrix
+
   public static void Start()
   {
-    int[,] a = { { 1, 2 }, { 3, 4 } };
-    int[,] b = { { 5, 6 }, { 7, 8 } };
+    int[,] matrixA = { { 1, 2 }, { 3, 4 } };
+    int[,] matrixB = { { 5, 6 }, { 7, 8 } };
 
     Console.WriteLine("Matrix A:");
-    PrintMatrix(a);
+    PrintMatrix(matrixA);
     Console.WriteLine("Matrix B:");
-    PrintMatrix(b);
+    PrintMatrix(matrixB);
 
-    int[,] result = Multiply(a, b);
+    int[,] product = Multiply(matrixA, matrixB);
     Console.WriteLine("A × B =");
-    PrintMatrix(result);
+    PrintMatrix(product);
     // Erwartetes Ergebnis: [[19,22],[43,50]]
   }
 
-  public static int[,] Multiply(int[,] a, int[,] b)
+  public static int[,] Multiply(int[,] matrixA, int[,] matrixB)
   {
-    int[,] result = new int[2, 2];
-    for (int i = 0; i < 2; i++)
+    int[,] result = new int[Size, Size];
+    for (int row = 0; row < Size; row++)
     {
-      for (int j = 0; j < 2; j++)
+      for (int column = 0; column < Size; column++)
       {
-        for (int k = 0; k < 2; k++)
+        // Zeile row von A mit Spalte column von B "verrechnen":
+        // step läuft gleichzeitig nach rechts durch die Zeile von A
+        // und nach unten durch die Spalte von B.
+        //
+        // Beispiel result[0, 0]:  A[0,0]·B[0,0] + A[0,1]·B[1,0] = 1·5 + 2·7 = 19
+        //                         step = 0        step = 1
+        for (int step = 0; step < Size; step++)
         {
-          result[i, j] += a[i, k] * b[k, j];
+          result[row, column] += matrixA[row, step] * matrixB[step, column];
         }
       }
     }
@@ -39,9 +47,11 @@ public static class MatrixRechnerLoesung
     return result;
   }
 
-  private static void PrintMatrix(int[,] m)
+  private static void PrintMatrix(int[,] matrix)
   {
-    Console.WriteLine($"  | {m[0, 0],4} {m[0, 1],4} |");
-    Console.WriteLine($"  | {m[1, 0],4} {m[1, 1],4} |");
+    for (int row = 0; row < Size; row++)
+    {
+      Console.WriteLine($"  | {matrix[row, 0],4} {matrix[row, 1],4} |");
+    }
   }
 }
