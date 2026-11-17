@@ -35,8 +35,8 @@ internal static class Program
 
     // ---- Modul 05 ----
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag1_Einkaufsliste.EinkaufslisteForm());
-     Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag2_WoerterbuchApp.WoerterbuchAppForm());
-    // ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag3_FilmarchivAuswertung.FilmarchivAuswertung.Start();
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag2_WoerterbuchApp.WoerterbuchAppForm());
+     ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag3_FilmarchivAuswertung.FilmarchivAuswertung.Start();
 
     // ---- Modul 06 ----
     // ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag1_BankAccount.BankAccountDemo.Start();
