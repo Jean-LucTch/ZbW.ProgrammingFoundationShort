@@ -24,12 +24,14 @@ public partial class MatrizenRechnerForm : Form
       for (int column = 0; column < ColumnCount; column++)
       {
         string input = inputFields[row, column].Text;
-        if (!int.TryParse(input, out matrix[row, column]))
+        if (!int.TryParse(input, out int number))
         {
           // +1, damit die Meldung bei 1 zu zählen beginnt (Zeile 1 statt Zeile 0)
           throw new FormatException(
             $"Ungültiger Wert «{input}» in Matrix {matrixName}, Zeile {row + 1}, Spalte {column + 1}.");
         }
+
+        matrix[row, column] = number;
       }
     }
 
@@ -67,8 +69,7 @@ public partial class MatrizenRechnerForm : Form
       int[,] matrixA = ReadMatrixA();
       int[,] matrixB = ReadMatrixB();
       int[,] sumMatrix = AddMatrices(matrixA, matrixB);
-      LblErgebnis.Text = "A + B =" + Environment.NewLine;
-      ShowMatrix(sumMatrix, LblErgebnis);
+      LblErgebnis.Text = "A + B =" + Environment.NewLine + MatrixToText(sumMatrix);
     }
     catch (FormatException ex)
     {
@@ -82,8 +83,7 @@ public partial class MatrizenRechnerForm : Form
     {
       int[,] matrixA = ReadMatrixA();
       int[,] transposedMatrix = Transpose(matrixA);
-      LblErgebnis.Text = "A^T =" + Environment.NewLine;
-      ShowMatrix(transposedMatrix, LblErgebnis);
+      LblErgebnis.Text = "A^T =" + Environment.NewLine + MatrixToText(transposedMatrix);
     }
     catch (FormatException ex)
     {
@@ -121,9 +121,10 @@ public partial class MatrizenRechnerForm : Form
     return transposedMatrix;
   }
 
-  private static void ShowMatrix(int[,] matrix, Label outputLabel)
+  // Gibt die Matrix als mehrzeiligen Text zurück, z.B. "|    1    2    3 |"
+  private static string MatrixToText(int[,] matrix)
   {
-    string text = outputLabel.Text;
+    string text = "";
     for (int row = 0; row < matrix.GetLength(0); row++)
     {
       text += "| ";
@@ -135,6 +136,6 @@ public partial class MatrizenRechnerForm : Form
       text += "|" + Environment.NewLine;
     }
 
-    outputLabel.Text = text;
+    return text;
   }
 }
