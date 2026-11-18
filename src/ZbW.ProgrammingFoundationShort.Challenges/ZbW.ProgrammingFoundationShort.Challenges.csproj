@@ -18,6 +18,9 @@
     <Compile Update="Module05\Aufgabe1_Leseliste\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Module05\Aufgabe2_HauptstadtLexikon\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
