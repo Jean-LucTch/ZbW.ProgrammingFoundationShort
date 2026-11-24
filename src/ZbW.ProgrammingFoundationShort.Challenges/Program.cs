@@ -49,8 +49,9 @@ internal static class Program
 
     // ---- Modul 05 ----
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe1_Leseliste.LeselisteForm());
-      Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe1_Leseliste.Form1());
+    //  Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe1_Leseliste.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe2_HauptstadtLexikon.HauptstadtLexikonForm());
+    Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe2_HauptstadtLexikon.Form1());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe3_InventarVerwaltung.InventarVerwaltungForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe4_HaeufigkeitsAnalyse.HaeufigkeitsAnalyseForm());
 
